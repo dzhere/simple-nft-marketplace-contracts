@@ -104,7 +104,8 @@ contract Marketplace is IERC721Receiver, IERC1155Receiver {
     }
 
     function addLot(address owner, Lot memory lot) private returns (uint256 lotId) {
-        lotId = lots[owner].push(lot) - 1;
+        lots[owner].push(lot);
+        lotId = lots[owner].length - 1;
         indexes[owner].push(lotId);
     }
 }
